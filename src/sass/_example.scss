@@ -1,28 +1,25 @@
-.example {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  line-height: 1.5;
-  background-color: #fff;
-  color: #2f2f37;
-  max-width: 960px;
-  padding: 16px;
+.search-form {
+  height: 60px;
+  background-color: teal;
+  padding: 5px;
+  text-align: center;
 }
 
-.example code {
-  font-family: monospace;
-  font-size: 16px;
+input,
+button {
   font-weight: 700;
-  background-color: #ff6b0a;
-  color: #fff;
-  padding: 2px 6px;
-  border-radius: 2px;
+  font-size: 16px;
+  line-height: 1.88;
+  letter-spacing: 0.06em;
+  background-color: white;
+  cursor: pointer;
+  border: 0;
+  padding: 10px 32px;
+  border-radius: 4px;
+  transition: background-color 750ms cubic-bezier(0.4, 0, 0.8, 1);
 }
 
-.example .background {
-  height: 240px;
-  // ❗️❗️❗️ The path to images from a SASS file
-  // is always the same as from the css folder.
-  background-image: url('../images/logo.png');
-  background-size: cover;
-  background-position: center;
+button:hover,
+button:focus {
+  background-color: rgb(5, 163, 163);
 }
