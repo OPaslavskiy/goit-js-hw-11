@@ -1,14 +1,21 @@
 .search-form {
   height: 60px;
-  background-color: teal;
+  background-image: linear-gradient(90deg, #788ba1 15%, rgba(161, 120, 132, .7) 40%, rgba(123, 120, 161, 0.6) 75%, rgba(213, 117, 63, .7));
   padding: 5px;
   text-align: center;
+  position: fixed;
+  z-index: 99;
+  width: 100%;
+}
+
+body {
+  position: absolute;
 }
 
 input,
 .search-btn {
-  font-weight: 700;
-  font-size: 16px;
+  font-weight: 400;
+  font-size: 15px;
   line-height: 1.88;
   letter-spacing: 0.06em;
   background-color: white;
@@ -21,5 +28,42 @@ input,
 
 .search-btn:hover,
 .search-btn:focus {
-  background-color: rgb(5, 163, 163);
+  background-color: rgba(211, 125, 75, 0.788);
+
+}
+
+
+.gallery {
+  margin: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 100px;
+
+}
+
+.photo-card img {
+  width: 300px;
+  height: 200px;
+
+}
+
+.photo-card {
+  margin-bottom: 30px;
+}
+
+
+.info {
+  margin-left: 10px;
+}
+
+.info-item {
+  height: 20px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding: 0px;
+  font-weight: 300;
+  font-size: 12px;
+  line-height: 1.88;
+  letter-spacing: 0.06em;
 }
