@@ -5,7 +5,6 @@ const URL_PIXABAY = `https://pixabay.com/api/`;
 let currentPage = 1;
 
 const divGallery = document.querySelector('.gallery');
-
 const form = document.querySelector('.search-form');
 
 form.addEventListener('submit', searchUser);
@@ -13,7 +12,7 @@ form.addEventListener('submit', searchUser);
 function searchUser(event) {
   event.preventDefault();
   const userRequest = event.currentTarget.elements.searchQuery.value;
-  console.log('123');
+  divGallery.innerHTML = '';
   fetchRequest(userRequest).then(card => createMarkup(card.data.hits));
 }
 
