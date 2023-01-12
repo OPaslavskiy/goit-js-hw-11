@@ -2,7 +2,7 @@ const axios = require('axios').default;
 
 const KEY_API_PIXABAY = '32781851-5380a4cc45169f3ca42a551c9';
 const URL_PIXABAY = `https://pixabay.com/api/`;
-const currentPage = 1;
+let currentPage = 1;
 
 const divGallery = document.querySelector('.gallery');
 
