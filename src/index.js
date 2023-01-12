@@ -6,17 +6,42 @@ let currentPage = 1;
 
 const divGallery = document.querySelector('.gallery');
 const form = document.querySelector('.search-form');
+const loadMoreBtn = document.querySelector('.load-more');
+const footer = document.querySelector('.footer');
 
 form.addEventListener('submit', searchUser);
+loadMoreBtn.addEventListener('click', loadMoreByBtn);
 
 function searchUser(event) {
   event.preventDefault();
+  footer.classList.add('hidden');
+  currentPage = 1;
   const userRequest = event.currentTarget.elements.searchQuery.value;
   divGallery.innerHTML = '';
   fetchRequest(userRequest).then(card => createMarkup(card.data.hits));
 }
 
+function loadMoreByBtn() {
+  const userRequest = form.elements.searchQuery.value;
+  fetchRequestMore(userRequest).then(card => createMarkup(card.data.hits));
+}
+
 async function fetchRequest(userRequest) {
+  console.log(userRequest);
+  try {
+    const response = await axios.get(
+      `${URL_PIXABAY}?key=${KEY_API_PIXABAY}&q=${userRequest}&image_type=photo&orientation=horizontal&safesearch=true&per_page=40&page=${currentPage}`
+    );
+    currentPage = +1;
+    return response;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+async function fetchRequestMore(userRequest) {
+  console.log(userRequest);
+  currentPage += 1;
   try {
     const response = await axios.get(
       `${URL_PIXABAY}?key=${KEY_API_PIXABAY}&q=${userRequest}&image_type=photo&orientation=horizontal&safesearch=true&per_page=40&page=${currentPage}`
@@ -57,5 +82,6 @@ function createMarkup(arrayPhoto) {
   </div>`
     )
     .join('');
-  divGallery.insertAdjacentHTML('afterbegin', markup);
+  divGallery.insertAdjacentHTML('beforeend', markup);
+  footer.classList.remove('hidden');
 }
