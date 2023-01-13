@@ -1,4 +1,11 @@
+import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
 import Notiflix from 'notiflix';
+
+let gallery = new SimpleLightbox('.gallery .big-photo-ref', {
+  // captionsData: 'alt',
+  captionDelay: 250,
+});
 
 Notiflix.Notify.init({
   width: '500px',
@@ -84,7 +91,7 @@ function createMarkup(arrayPhoto) {
         views,
         comments,
         downloads,
-      }) => `<div class="photo-card">
+      }) => `<a class="big-photo-ref" href="${largeImageURL}"><div class="photo-card">
     <img src="${webformatURL}" alt="${tags}" loading="lazy" />
     <div class="info">
       <p class="info-item">
@@ -100,9 +107,11 @@ function createMarkup(arrayPhoto) {
         <b>Downloads: ${downloads}</b>
       </p>
     </div>
-  </div>`
+  </div></a>`
     )
     .join('');
   divGallery.insertAdjacentHTML('beforeend', markup);
+
+  gallery.refresh();
   footer.classList.remove('hidden');
 }

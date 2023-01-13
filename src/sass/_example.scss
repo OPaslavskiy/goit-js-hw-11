@@ -51,9 +51,9 @@ input,
 
 }
 
-.photo-card {
-  margin-bottom: 30px;
-}
+// .photo-card {
+//   margin-bottom: 30px;
+// }
 
 
 .info {
@@ -117,4 +117,18 @@ input,
   letter-spacing: 0.06em;
   color: rgb(255, 255, 255);
   background-image: linear-gradient(90deg, #788ba1 15%, rgba(161, 120, 132, .7) 40%, rgba(123, 120, 161, 0.6) 75%, rgba(213, 117, 63, .7));
+}
+
+.big-photo-ref {
+  margin-bottom: 30px;
+  padding-bottom: 7px;
+  text-decoration: none;
+  color: inherit;
+  transition: box-shadow 250ms var(--time-cube);
+
+}
+
+.big-photo-ref:hover,
+.big-photo-ref:focus {
+  box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08), 0px 2px 2px rgba(0, 0, 0, 0.12);
 }
