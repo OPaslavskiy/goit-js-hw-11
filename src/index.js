@@ -57,7 +57,6 @@ async function fetchRequest(userRequest) {
         `Sorry, there are no images matching your search query. Please try again.`
       );
 
-    //
     if ((hits.length && per_page > hits.length) || MAX_LOAD < 40) {
       footer.classList.add('hidden');
       const infoByEnd = `<div class="info-by-end">We're sorry, but you've reached the end of search results.</div>`;
