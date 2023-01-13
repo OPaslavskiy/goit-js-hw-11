@@ -46,13 +46,12 @@ function loadMoreByBtn() {
 
 async function fetchRequest(userRequest) {
   MAX_LOAD -= 40;
-  console.log(MAX_LOAD);
   currentPage += 1;
   try {
     const response = await axios.get(
       `${URL_PIXABAY}?key=${KEY_API_PIXABAY}&q=${userRequest}&image_type=photo&orientation=horizontal&safesearch=true&per_page=${per_page}&page=${currentPage}`
     );
-    console.log(response);
+    // console.log(response);
 
     let hits = response.data.hits;
     const totalHits = response.data.totalHits;
@@ -76,7 +75,7 @@ async function fetchRequest(userRequest) {
 
     return response;
   } catch (error) {
-    console.log(error);
+    Notiflix.Notify.failure(`${error}`);
   }
 }
 
@@ -115,3 +114,12 @@ function createMarkup(arrayPhoto) {
   gallery.refresh();
   footer.classList.remove('hidden');
 }
+
+const { height: cardHeight } = document
+  .querySelector('.gallery')
+  .firstElementChild.getBoundingClientRect();
+
+window.scrollBy({
+  top: cardHeight * 2,
+  behavior: 'smooth',
+});
