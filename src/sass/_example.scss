@@ -107,3 +107,14 @@ input,
   clip: rect(0 0 0 0);
   overflow: hidden;
 }
+
+.info-by-end {
+  height: 60px;
+  font-weight: 800;
+  font-size: 20px;
+  line-height: 1.88;
+  text-align: center;
+  letter-spacing: 0.06em;
+  color: rgb(255, 255, 255);
+  background-image: linear-gradient(90deg, #788ba1 15%, rgba(161, 120, 132, .7) 40%, rgba(123, 120, 161, 0.6) 75%, rgba(213, 117, 63, .7));
+}
