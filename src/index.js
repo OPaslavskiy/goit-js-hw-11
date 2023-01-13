@@ -2,22 +2,21 @@ import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 import Notiflix from 'notiflix';
 
-let gallery = new SimpleLightbox('.gallery .big-photo-ref', {
-  // captionsData: 'alt',
-  captionDelay: 250,
-});
-
 Notiflix.Notify.init({
   width: '500px',
   position: 'left-top',
+});
+
+let gallery = new SimpleLightbox('.gallery .big-photo-ref', {
+  captionDelay: 250,
 });
 
 const axios = require('axios').default;
 
 const KEY_API_PIXABAY = '32781851-5380a4cc45169f3ca42a551c9';
 const URL_PIXABAY = `https://pixabay.com/api/`;
-let MAX_LOAD = 500;
 const per_page = 40;
+let MAX_LOAD = 500;
 let currentPage = 0;
 
 const divGallery = document.querySelector('.gallery');
@@ -73,6 +72,17 @@ async function fetchRequest(userRequest) {
       Notiflix.Notify.info(`Hooray! We found ${totalHits} images.`);
     }
 
+    if (currentPage > 1) {
+      const { height: cardHeight } = document
+        .querySelector('.gallery')
+        .firstElementChild.getBoundingClientRect();
+
+      window.scrollBy({
+        top: cardHeight * 2,
+        behavior: 'smooth',
+      });
+    }
+
     return response;
   } catch (error) {
     Notiflix.Notify.failure(`${error}`);
@@ -114,12 +124,3 @@ function createMarkup(arrayPhoto) {
   gallery.refresh();
   footer.classList.remove('hidden');
 }
-
-const { height: cardHeight } = document
-  .querySelector('.gallery')
-  .firstElementChild.getBoundingClientRect();
-
-window.scrollBy({
-  top: cardHeight * 2,
-  behavior: 'smooth',
-});
